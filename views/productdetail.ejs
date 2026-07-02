@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home</title>
+  </head>
+  <body>
+    <%- include('components/userheader')%>
+<h2>Product Details Page</h2>
+      <div class="gapping"></div>
+      
+      <div class="container">     
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <%if (msg != undefined){ %>
+          <div class="alert alert-<%=type%>" role="alert"> <%= msg %></div>
+    <% } %>
+    </div>
+    </div>
+
+    <div class="container">
+      <%if (product != null ){ %>
+      
+        <div class="card mb-3">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="data:<%=product.photoFormat%>;base64,<%=product.photo.toString('base64')%>" class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">Name: <%=product.name%></h5>
+        <p class="card-text">Category: <%=product.category%></p>
+        <h2> Discount: <%= product.discount%> Qty: <%=product.quantity%></h2>
+        <h3>Price: <%=product.price%>/- Only</h3>
+        <p>
+          <b>Description:</b> <%=product. detail%> 
+        </p>
+        <p class="card-text"><small class="text-body-secondary">Check Status: <%=product.check%></small></p>
+
+        <%if (product.quantity >= 1){ %>
+          <!-- // yaha se aage form ke through banana he.  -->
+          <a class="btn btn-primary" href="/user/checkout/<%=product._id%>">Buy Now.</a>
+
+     <%   }else{ %>
+          <a class="btn btn-warning" href="#">Out of Stock !.</a>
+  <%   }%>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    <%  }%>
+    </div>
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  <%- include('components/footer')%>
+  </body>
+</html>

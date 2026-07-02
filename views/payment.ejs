@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <%- include('components/header')%>
+<h1> Make Payment</h1>
+<div class="container">
+  <% if(msg != undefined){ %>
+        <div class="alert alert-<%=type%>" role="alert"> <%= msg %></div>
+<% }%>
+   <form class="px-4 py-3" action="/user/payment" method="post">
+        <div class="col-md-3">
+    <label for="validationCustom04" class="form-label">Payment Mode</label>
+    <select class="form-select" name="paymode" id="validationCustom04" required>
+      <option selected disabled value="">Choose Payment Mode</option>
+      <option value="cod">Cash on Delivery</option>
+      <option value="netbanking">Net Banking</option>
+      <option value="upi">UPI</option>
+    </select>
+    <div class="invalid-feedback">
+      Please select a valid Option.
+    </div>
+  </div>
+    <div class="mb-3">
+      <label for="exampleDropdownFormEmail1" class="form-label">Transection ID</label>
+      <input type="text" name="trxid" required     class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
+    </div>
+    <button type="submit" class="btn btn-primary">Pay Now !</button>
+  </form>
+</div>
+  <%- include('components/footer')%>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('components/adminheader') %>
+    <div class="container productform">
+    <h1> Add New Product</h1>
+<form action="/admin/addproduct" method="post" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
+
+    <% if(msg != undefined){ %>
+    <div class="alert alert-<%= type %>"><%= msg %></div>
+  <%  }%>
+
+    <div class="col-md-4">
+    <label for="validationCustom01" class="form-label">Name</label>
+    <input type="text" name="name" class="form-control" id="validationCustom01" required>
+    <div class="valid-feedback">
+      Looks good!
+    </div>
+  </div>
+  <div class="col-md-4">
+    <label for="validationCustom02" class="form-label">Category</label>
+    <select class="form-select" name="category" id="validationCustom04" required>
+      <option selected disabled value="default">Select Category</option>
+      <option value="Fashion">Fashion</option>
+      <option value="HomeApp">Home Appliance</option>
+      <option value="Ferniture">Ferniture</option>
+      <option value="Mobile">Mobile</option>
+      <option value="Laptop">Laptop</option>
+    </select>
+    <div class="valid-feedback">
+      Looks good!
+    </div>
+  </div>
+  <div class="col-md-4">
+    <label for="validationCustomUsername" class="form-label">Price</label>
+      <input type="number" name="price" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+      <div class="invalid-feedback">
+        Please choose a username.
+      </div>
+  </div>
+  <div class="col-md-3">
+    <label for="validationCustom03" class="form-label">Discount</label>
+    <input type="number" name="discount" class="form-control" id="validationCustom03" required>
+    <div class="invalid-feedback">
+      Please provide a valid city.
+    </div>
+  </div>
+  <div class="col-md-3">
+      <label for="validationCustom05" class="form-label">Quantity</label>
+      <input type="number" name="quantity" class="form-control" id="validationCustom05" required>
+      <div class="invalid-feedback">
+          Please provide a valid zip.
+        </div>
+    </div>
+    <div class="col-md-3">
+      <label for="validationCustom04" class="form-label">Details</label>
+      <textarea class="form-control" name="detail" id="validationCustom06" required cols="50" rows="3" ></textarea>
+      <div class="invalid-feedback">
+        Please select a valid state.
+      </div>
+    </div>
+  <div class="col-md-3">
+    <label for="validationCustom05" class="form-label">Photo</label>
+    <input type="file" class="form-control" name="photo" id="validationCustom05" required>
+    <div class="invalid-feedback">
+      Please provide a valid zip.
+    </div>
+  </div>
+  <div class="col-12">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" name="check" value="checked ok" id="invalidCheck" required>
+      <label class="form-check-label" for="invalidCheck">
+        Cleck and confirm before Add Product
+      </label>
+      <div class="invalid-feedback">
+        You must Check before Adding.
+      </div>
+    </div>
+  </div>
+  <div class="col-12">
+    <button class="btn btn-primary" type="submit">Add Now!</button>
+  </div>
+</form>
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+(() => {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      form.classList.add('was-validated')
+    }, false)
+  })
+})()
+    </script>
+</div>
+
+    <%- include('components/footer') %>
+</body>
+</html>

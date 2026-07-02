@@ -1,0 +1,39 @@
+{
+  "name": "ecommerse",
+  "version": "1.0.0",
+  "description": "online products shoping buy and sales. ",
+  "keywords": [
+    "shop",
+    "money",
+    "offer",
+    "product",
+    "category",
+    "sub",
+    "category",
+    "mrp",
+    "price",
+    "discount",
+    "profit"
+  ],
+  "license": "ISC",
+  "author": "infoviaan",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "body-parser": "^2.2.2",
+    "dotenv": "^17.4.2",
+    "ejs": "^6.0.1",
+    "express": "^5.2.1",
+    "express-session": "^1.19.0",
+    "mongodb": "^7.2.0",
+    "mongoose": "^9.6.3",
+    "multer": "^2.1.1",
+    "nocache": "^4.0.0",
+    "nodemailer": "^8.0.10",
+    "nodemon": "^3.1.14"
+  }
+}

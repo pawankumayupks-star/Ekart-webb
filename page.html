@@ -1,0 +1,99 @@
+						<form method="post"  name="myvalidfor" onsubmit="return validatadfg()" action="contact" class="row g-3">
+                    <div class="col-md-6">
+                        <label for="name" class="form-label">Your Name*</label>
+                        <input type="text" class="form-control" name="name" placeholder="Enter your name">
+           <span class="err" id="userfirstnameerror"></span> <span class="oks" id="userfirstnamecorrect"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="email" class="form-label">Email Address*</label>
+                        <input type="email" class="form-control" name="email" placeholder="Enter your email">
+           <span class="err" id="useremailerror"></span> <span class="oks" id="useremailcorrect"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="phone" class="form-label">Phone Number*</label>
+                        <!-- Changed type to "tel" for better UX -->
+                        <input type="number" class="form-control" name="phone" maxlength="10" placeholder="XXXXX XXXXX">
+           <span class="err" id="userphoneerror"></span> <span class="oks" id="userphonecorrect"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="subject" class="form-label">Subject</label>
+                        <input type="text" class="form-control" name="subject" placeholder="How can we help?">
+                        
+                    </div>
+
+                    <div class="col-12">
+                        <label for="message" class="form-label">Your Message</label>
+                        <textarea class="form-control" name="message"  rows="5"
+                            placeholder="Write your message here..."></textarea>
+                            <input type="datetime-local" style="visibility: hidden;" name="date"  id="mydate">
+						
+                    </div>
+                    <div class="col-4 mt-5">
+                        <!-- Changed button text -->
+                        <button type="submit" class="btn btn-dark w-100">Send Message <i
+                                class="fa-regular fa-paper-plane"></i></button>
+                    </div>
+                </form>
+         <script>
+            function validatadfg(){
+                console.log("hello");
+    let userfirstname = document.myvalidfor.name.value;
+    let useremailadd = document.myvalidfor.email.value;
+    let usermobile = document.myvalidfor.phone.value;
+                
+
+    var emailformat = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
+    var nameformat = /^[A-Za-z]+(?: [A-Za-z]+)?$/;
+    const mobileformat = /^[0-9]{10}$/;
+
+    // FIRST NAME VALIDDATE
+    if (userfirstname.length == 0 || userfirstname == "") {
+        document.getElementById('userfirstnameerror').innerHTML = "Please Enter Name "
+        document.getElementById('userfirstnamecorrect').innerHTML = "";
+        return false;
+    }
+    else if (!userfirstname.match(nameformat)) {
+        document.getElementById('userfirstnameerror').innerHTML = "Please Enter Valid Name "
+        document.getElementById('userfirstnamecorrect').innerHTML = "";
+        return false;
+    }
+    else {
+        document.getElementById("userfirstnameerror").innerHTML = "";
+        document.getElementById("userfirstnamecorrect").innerHTML = "Name Accepted ";
+    }
+
+    // EMAIL VALIDATE 
+    if (useremailadd.length == 0 || useremailadd == "") {
+        document.getElementById('useremailerror').innerHTML = "Please Enter Email "
+        document.getElementById('useremailcorrect').innerHTML = ""
+        return false;
+    }
+    else if (!useremailadd.match(emailformat)) {
+        document.getElementById('useremailerror').innerHTML = "Please Enter Valid Email "
+        document.getElementById('useremailcorrect').innerHTML = ""
+        return false;
+    }
+    else {
+        document.getElementById('useremailerror').innerHTML = ""
+        document.getElementById('useremailcorrect').innerHTML = "Email Accepted "
+    }
+
+    // MOIBLE VALIDATE
+    if (usermobile.length == 0 || usermobile == "") {
+        document.getElementById('userphoneerror').innerHTML = "Please Enter Mobile ";
+        document.getElementById('userphonecorrect').innerHTML = "";
+        return false;
+    }
+    else if (!usermobile.match(mobileformat)) {
+        document.getElementById('userphoneerror').innerHTML = "Please Enter 10 Digit Mobile "
+        document.getElementById('userphonecorrect').innerHTML = "";
+        return false;
+    }
+    else {
+        document.getElementById('userphoneerror').innerHTML = "";
+        document.getElementById('userphonecorrect').innerHTML = "Mobile Number Accepted ";
+    }
+   }
+        </script>

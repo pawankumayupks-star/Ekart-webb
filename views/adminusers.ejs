@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('components/adminheader') %>
+<div class="container">
+
+    <h1> Registered Users</h1>
+    
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">S.No</th>
+                <th scope="col">Name</th>
+                <th scope="col">Mobile</th>
+                <th scope="col">Email</th>
+                <th scope="col">Address</th>
+                <th scope="col">pincode</th>
+                <th scope="col">policy</th>
+                <th scope="col">ACStatus</th>
+                <th scope="col">Photo</th>
+                <th scope="col">OTP</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if(msg!= undefined){ %>
+                <div class="alert alert-<%=type%>" role="alert"> <%= msg %></div>
+                <%  } %>
+                <% 
+                let i = 1;
+                if (users != null){
+                    users.forEach((user)=>{ %>
+                        <tr>
+                            <th scope="row"><%= i++ %></th>  
+                            <td><%= user.name %></td>
+                            <td><%=user.mobile%></td>
+                            <td><%=user.email%></td>
+                            <td><%=user.address%></td>
+                            <td><%=user.pincode%></td>
+                            <td><%=user.policy%></td>
+                            <td><%=user.acstatus%></td>
+                            <td>
+                                <img src="data:<%=user.photoFormat%>;base64,<%=user.photo.toString('base64')%>" alt="image N/A" height="60" width="50">
+                            </td>
+                            <td><%=user.otp%></td>
+                            <td>
+                                <a class="btn btn-primary" href="/admin/updateUpser/<%= user._id%>" onclick="return confirm('Click ok for Update Account?')" role="button">Update</a>
+                                <a class="btn btn-danger" href="/admin/deleteUser/<%=user._id%>" onclick="return confirm('Click ok for Delete Account?')" role="button">Delete</a>
+                            </td>
+                        </tr>
+                        <%  });
+                    }else{ %>
+                        <div class="alert alert-danger" role="alert"> Users Not Found</div>
+                        <% } %>
+                        
+                    </tbody>
+                </table>
+                
+            </div>
+                <%- include('components/footer') %>
+            </body>
+            </html>

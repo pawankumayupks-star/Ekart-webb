@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home</title>
+  </head>
+  <body>
+    <%- include('components/userheader')%>
+<h2>Products Page</h2>
+      <div class="gapping"></div>
+      
+      <div class="container">     
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <%if (msg != undefined){ %>
+          <div class="alert alert-<%=type%>" role="alert"> <%= msg %></div>
+    <% } %>
+  
+      <% if( products != null){
+          products.forEach((item)=>{ %>
+            <div class="col">
+              <div class="card h-100">
+                <img src="data:<%=item.photoFormat%>;base64,<%=item.photo.toString('base64')%>" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title"><%=item.name%></h5>
+                  <p class="card-text">
+                    <%= item.detail%>
+                  </p>
+                  <h4>Rs: <%=item.price%>/- Only </h4>
+                  <h5>Discount Amount <%=item.discount%>/-</h5>
+                  <a class="btn btn-primary" href="/user/buynow/<%=item._id%>">Buy Now!</a>
+                </div>
+                <div class="card-footer">
+                  <small class="text-body-secondary"><%=item.category%> : Login to Buy Product</small>
+                </div>
+              </div>
+            </div>
+
+        <%  })
+      }else{ %>
+          <div class="alert alert-danger" role="alert"> No Products Stock Available.</div>
+
+    <%  } %>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  <%- include('components/footer')%>
+  </body>
+</html>
